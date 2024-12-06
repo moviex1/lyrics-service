@@ -1,0 +1,1 @@
+ALTER TABLE lyrics ADD CONSTRAINT unique_song_id UNIQUE (song_id);

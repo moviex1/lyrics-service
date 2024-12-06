@@ -1,0 +1,1 @@
+ALTER TABLE lyrics DROP CONSTRAINT unique_song_id;
