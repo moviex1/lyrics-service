@@ -5,8 +5,9 @@ import (
 
 	"example.com/internal/lyrics/dto"
 	"example.com/internal/lyrics/mapper"
+	lyricsRepository "example.com/internal/lyrics/repository/implementation"
 	"example.com/internal/lyrics/service"
-	"example.com/internal/lyrics/service/lyrics"
+	lyricsService "example.com/internal/lyrics/service/implementation"
 	"example.com/pkg/request"
 	"example.com/pkg/response"
 	"github.com/gin-gonic/gin"
@@ -19,7 +20,9 @@ type LyricsController struct {
 
 func NewLyricsController() *LyricsController {
 	return &LyricsController{
-		lyrics.NewLyricsService(),
+		lyricsService.NewLyricsService(
+			lyricsRepository.NewLyricsRepository(),
+		),
 	}
 }
 

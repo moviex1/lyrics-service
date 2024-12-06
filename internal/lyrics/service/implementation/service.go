@@ -8,11 +8,13 @@ import (
 var _ service.LyricsService = (*lyricsService)(nil)
 
 type lyricsService struct {
-	repository *repository.LyricsRepository
+	repository repository.LyricsRepository
 }
 
-func NewLyricsService() *lyricsService {
+func NewLyricsService(
+	repository repository.LyricsRepository,
+) *lyricsService {
 	return &lyricsService{
-		repository.NewLyricsRepository(),
+		repository,
 	}
 }
