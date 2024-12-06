@@ -5,9 +5,7 @@ import (
 
 	"example.com/internal/lyrics/dto"
 	"example.com/internal/lyrics/mapper"
-	lyricsRepository "example.com/internal/lyrics/repository/implementation"
 	"example.com/internal/lyrics/service"
-	lyricsService "example.com/internal/lyrics/service/implementation"
 	"example.com/pkg/request"
 	"example.com/pkg/response"
 	"github.com/gin-gonic/gin"
@@ -18,11 +16,11 @@ type LyricsController struct {
 	service service.LyricsService
 }
 
-func NewLyricsController() *LyricsController {
+func NewLyricsController(
+	service service.LyricsService,
+) *LyricsController {
 	return &LyricsController{
-		lyricsService.NewLyricsService(
-			lyricsRepository.NewLyricsRepository(),
-		),
+		service,
 	}
 }
 
