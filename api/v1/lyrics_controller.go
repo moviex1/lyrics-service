@@ -6,6 +6,7 @@ import (
 	"example.com/internal/lyrics/dto"
 	"example.com/internal/lyrics/mapper"
 	"example.com/internal/lyrics/service"
+	"example.com/internal/lyrics/service/lyrics"
 	"example.com/pkg/request"
 	"example.com/pkg/response"
 	"github.com/gin-gonic/gin"
@@ -13,12 +14,12 @@ import (
 )
 
 type LyricsController struct {
-	service *service.LyricsService
+	service service.LyricsService
 }
 
 func NewLyricsController() *LyricsController {
 	return &LyricsController{
-		service.NewLyricsService(),
+		lyrics.NewLyricsService(),
 	}
 }
 
