@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"fmt"
+	"log"
 
 	config "example.com/configs"
 	"github.com/jmoiron/sqlx"
@@ -20,7 +21,7 @@ func GetConnection() *sqlx.DB {
 	connStr := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", cfg.Host, cfg.Port, cfg.Username, cfg.Password, cfg.Name)
 	db, err := sqlx.Connect("postgres", connStr)
 	if err != nil {
-		fmt.Println(err)
+		log.Fatalf("Failed database connection!")
 		return nil
 	}
 

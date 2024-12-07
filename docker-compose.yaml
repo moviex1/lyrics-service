@@ -11,12 +11,21 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  app:
+  api:
     build:
       context: .
-      dockerfile: devops/golang/Dockerfile
+      dockerfile: devops/golang/Dockerfile.api
     ports:
       - "8080:8080"
+    depends_on:
+      - postgres
+  
+  grpc:
+    build:
+      context: .
+      dockerfile: devops/golang/Dockerfile.grpc
+    ports:
+      - "9000:9000"
     depends_on:
       - postgres
 

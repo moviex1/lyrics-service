@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package lyrics;
+
+option go_package = "example.com/protos";
+
+service LyricsService {
+    rpc GetAllLyrics (Empty) returns (LyricsResponseList);
+    rpc GetLyricsBySongId (LyricsBySongIdRequest) returns (LyricsResponse);
+    rpc CreateLyrics (CreateLyricsRequest) returns (LyricsResponse);
+    rpc UpdateLyrics (UpdateLyricsRequest) returns (LyricsResponse);
+}
+
+message Empty {}
+
+message LyricsBySongIdRequest {
+    string songId = 1;
+}
+
+message CreateLyricsRequest {
+    string songId = 1;
+    string content = 2;
+}
+
+message UpdateLyricsRequest {
+    string songId = 1;
+    string content = 2;
+}
+
+message LyricsResponse {
+    string id = 1;
+    string songId = 2;
+    string content = 3;
+    string createdAt = 4;
+    string updatedAt = 5;
+}
+
+message LyricsResponseList {
+    repeated LyricsResponse lyrics = 1;
+}
