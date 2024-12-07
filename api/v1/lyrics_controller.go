@@ -73,6 +73,10 @@ func (c *LyricsController) UpdateLyrics(ctx *gin.Context) {
 	result := c.service.UpdateLyrics(&dto.UpdateLyricsDto{
 		Content: request.Content,
 	}, songId)
+	if result == nil {
+		ctx.JSON(http.StatusNotFound, gin.H{"message": "Lyrics not Found"})
+		return
+	}
 
 	ctx.JSON(http.StatusOK, mapper.MapToResponse(result))
 }
