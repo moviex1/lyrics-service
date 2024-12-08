@@ -1,7 +1,7 @@
 package lyrics
 
 import (
-	v1 "example.com/api/v1"
+	v1 "example.com/internal/lyrics/api/rest"
 	r "example.com/internal/lyrics/repository/implementation"
 	s "example.com/internal/lyrics/service/implementation"
 	"github.com/gin-gonic/gin"

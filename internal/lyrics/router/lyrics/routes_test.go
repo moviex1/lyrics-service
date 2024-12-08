@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	v1 "example.com/api/v1"
+	v1 "example.com/internal/lyrics/api/rest"
 	"example.com/internal/lyrics/dto"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
